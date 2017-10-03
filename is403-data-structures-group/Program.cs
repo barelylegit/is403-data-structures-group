@@ -37,16 +37,19 @@ namespace is403_data_structures_group
             Console.WriteLine("4. Delete from " + structure);
             Console.WriteLine("5. Clear " + structure);
             Console.WriteLine("6. Search " + structure);
-            Console.WriteLine("7. Return to Main " + structure);
+            Console.WriteLine("7. Return to Main Menu");
         }
         static void Main(string[] args)
         {
+            Stack<string> stringStack = new Stack<string>();
             // create errorflag
             bool isValidInput = true;
             // create returnToMainMenu flag
             bool returnToMenu = true;
             // create returnToStructMenu flag
             bool returnToStructMenu = true;
+
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch(); //creates a stopwatch object
 
             // create user input placeholder
             int input = -1;
@@ -102,26 +105,130 @@ namespace is403_data_structures_group
                             }
                             switch (input)
                             {
-                                case 1:
-                                    Console.WriteLine("Add one time to stack");
+                                case 1: //enter string
+                                    Console.WriteLine("Enter a string:"); //prompts user to enter a string
+                                    stringStack.Push(Console.ReadLine()); //puts the string on the stack
                                     break;
-                                case 2:
-                                    Console.WriteLine("Add list stack");
+                                case 2: //add huge list
+                                    stringStack.Clear(); //empties the stack 
+                                    for (int i = 1; i <= 2000; i++) //adds 2000 entries
+                                    {
+                                        stringStack.Push("New Entry " + i);
+                                    }
                                     break;
-                                case 3:
-                                    Console.WriteLine("display stack");
+                                case 3: //display
+                                    if (stringStack.Count() == 0) //catches when the user hasn't added any items yet
+                                    {
+                                        Console.WriteLine("No items to display, please add items");
+                                    }
+                                    else
+                                    {
+                                        Stack<string> tempStringStack = new Stack<string>();
+
+                                        while (stringStack.Count() != 0)//saves all of the imtes that are being popped
+                                        {
+                                            string tempValue;
+                                            tempValue = stringStack.Pop();
+                                            tempStringStack.Push(tempValue);
+                                        }
+                                        while (tempStringStack.Count() != 0) //displays all the items
+                                        {
+                                            string tempValue;
+                                            tempValue = tempStringStack.Pop();
+                                            Console.WriteLine(tempValue);
+                                            stringStack.Push(tempValue);
+                                        }
+
+                                    }
                                     break;
-                                case 4:
-                                    Console.WriteLine("delete from stack");
+                                case 4: //delete from stack
+                                    string valueToDelete;
+                                    bool errorFlag = false;
+                                    if (stringStack.Count() == 0)
+                                    {
+                                        Console.WriteLine("Your stack is empty, please add to the stack");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Enter the value you wish to delete: ");//prompt the user for the string they want to delete
+                                        valueToDelete = Console.ReadLine();
+                                        Stack<string> tempStringStack = new Stack<string>();
+                                        while (errorFlag == false)
+                                        {
+                                            if (stringStack.Count() == 0) //in thise case, the item did not exist
+                                            {
+                                                Console.WriteLine("The item you searched did not exist in the Stack.");
+                                                errorFlag = true;
+                                            }
+                                            else if (stringStack.Peek() == valueToDelete)
+                                            {
+                                                stringStack.Pop(); //removes desired item from stack
+                                                errorFlag = true;
+                                            } 
+                                            else
+                                            {
+                                                tempStringStack.Push(stringStack.Pop()); //places the value into another temporary stack
+                                            }
+
+                                        }
+                                        while (tempStringStack.Count() != 0)//replaces the items on the stack
+                                        {
+                                            stringStack.Push(tempStringStack.Pop());
+                                        }
+                                    }
+
                                     break;
-                                case 5:
-                                    Console.WriteLine("clear stack");
+                                case 5: //empties the stack
+                                    stringStack.Clear();
+                                    Console.WriteLine("Stack has been cleared");
                                     break;
-                                case 6:
-                                    Console.WriteLine("search stack");
+                                case 6: //searches the stack
+                                    if (stringStack.Count() == 0)
+                                    {
+                                        Console.WriteLine("Your stack is empty, please add to the stack");
+                                    }
+                                    else
+                                    {
+                                        string valueToFind;
+                                        bool errorFlag1 = false;
+                                        Stack<string> tempStringStack = new Stack<string>();
+                                        Console.WriteLine("Enter the entry to search:");//prompts the user to enter the string they want to search
+                                        valueToFind = Console.ReadLine();
+
+                                        sw.Start(); //begins stopwatch
+                                        
+                                        while (errorFlag1 == false)
+                                        {
+                                            
+                                            if (stringStack.Count() == 0) //in this case, the item did not exist
+                                            {
+                                                Console.WriteLine("Not Found");
+                                                errorFlag1 = true;
+                                               
+                                            }
+                                            else if (stringStack.Peek() == valueToFind)
+                                            {
+                                                Console.WriteLine("Found"); //removes desired item from stack
+                                                errorFlag1 = true;
+                                               
+                                            }
+                                            else
+                                            {
+                                                tempStringStack.Push(stringStack.Pop()); //places the value into another temporary stack
+                                            }
+
+                                        }
+                                        while (tempStringStack.Count() != 0)
+                                        {
+                                            stringStack.Push(tempStringStack.Pop()); //replaces all of the stack's original values
+                                        }
+                                        sw.Stop();//stop stopwatch
+                                        Console.WriteLine("Search took: " + sw.Elapsed); //display the elapsed time
+                                    }
+                                    
                                     break;
                                 case 7:
-                                    Console.WriteLine("return to main menu");
+                                    Console.WriteLine("return to main menu"); //returns the user to the main menu
                                     returnToStructMenu = false;
                                     break;
                             }
