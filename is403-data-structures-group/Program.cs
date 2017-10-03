@@ -37,7 +37,7 @@ namespace is403_data_structures_group
             Console.WriteLine("4. Delete from " + structure);
             Console.WriteLine("5. Clear " + structure);
             Console.WriteLine("6. Search " + structure);
-            Console.WriteLine("7. Return to Main " + structure);
+            Console.WriteLine("7. Return to Main Menu");
         }
         static void Main(string[] args)
         {
