@@ -200,6 +200,7 @@ namespace is403_data_structures_group
                             }
                             switch (input)
                             {
+								//lets user enter in data to dictionary
                                 case 1:
                                     Console.WriteLine("Please enter information for Dictionary");
 									Console.Write(">");
@@ -207,6 +208,8 @@ namespace is403_data_structures_group
 									stringDict.Add(stringEntry, iCount);
 									iCount++;
                                     break;
+
+								//adds 2000 entries
                                 case 2:
                                     Console.WriteLine("Add list dictionary");
 									for (int i = 1; i <= 2000; i++)
@@ -214,6 +217,8 @@ namespace is403_data_structures_group
 										stringDict.Add("New Entry " + i, i);
 									}
                                     break;
+
+								//displays all the data in dictionary
                                 case 3:
                                     Console.WriteLine("displaying dictionary\n");
 									foreach (KeyValuePair<string, int> Dictionary in stringDict)
@@ -221,6 +226,8 @@ namespace is403_data_structures_group
 										Console.WriteLine(Dictionary.Key + " " + Dictionary.Value);
 									}
                                     break;
+
+								//Deletes an item that the user wants to delete
                                 case 4:
                                     Console.WriteLine("what do you want to delete from the Dictionary?");
 									stringEntry = Console.ReadLine();
@@ -233,10 +240,14 @@ namespace is403_data_structures_group
 										Console.WriteLine("THAT DOESN'T EXIST! D: You need to try something that is actually in your dictionary.\n");
 									}
                                     break;
+								
+								//clears all the data in the dictionary
                                 case 5:
                                     Console.WriteLine("clearing Dictionary");
 									stringDict.Clear();
                                     break;
+								
+								//Searches for specified item in dictionary
                                 case 6:
 									Console.WriteLine("What do you want to search for?");
 									stringEntry = Console.ReadLine();
@@ -258,6 +269,8 @@ namespace is403_data_structures_group
 									}
 									sw.Reset();
                                     break;
+								
+								//Returns to the main menu
                                 case 7:
                                     Console.WriteLine("Returning to main menu\n");
                                     returnToStructMenu = false;
