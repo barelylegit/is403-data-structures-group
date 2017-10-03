@@ -41,6 +41,11 @@ namespace is403_data_structures_group
         }
         static void Main(string[] args)
         {
+			Dictionary<string, int> stringDict = new Dictionary<string, int>();
+			System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+			TimeSpan ts;
+
+			string stringEntry;
             // create errorflag
             bool isValidInput = true;
             // create returnToMainMenu flag
@@ -172,10 +177,13 @@ namespace is403_data_structures_group
                             }
                         }
                         break;
+
+
                     case DICTIONARY:
                         returnToStructMenu = true; // reset returnToStructMenu
-                        while (returnToStructMenu)
+                        while (returnToStructMenu == true)
                         {
+							int iCount = 1;
                             structMenu("Dictionary");
                             try
                             {
@@ -193,25 +201,65 @@ namespace is403_data_structures_group
                             switch (input)
                             {
                                 case 1:
-                                    Console.WriteLine("Add one time to dictionary");
+                                    Console.WriteLine("Please enter information for Dictionary");
+									Console.Write(">");
+									stringEntry = Console.ReadLine();
+									stringDict.Add(stringEntry, iCount);
+									iCount++;
                                     break;
                                 case 2:
                                     Console.WriteLine("Add list dictionary");
+									for (int i = 1; i <= 2000; i++)
+									{
+										stringDict.Add("New Entry " + i, i);
+									}
                                     break;
                                 case 3:
-                                    Console.WriteLine("display dictionary");
+                                    Console.WriteLine("displaying dictionary\n");
+									foreach (KeyValuePair<string, int> Dictionary in stringDict)
+									{
+										Console.WriteLine(Dictionary.Key + " " + Dictionary.Value);
+									}
                                     break;
                                 case 4:
-                                    Console.WriteLine("delete from dictionary");
+                                    Console.WriteLine("what do you want to delete from the Dictionary?");
+									stringEntry = Console.ReadLine();
+									if (stringDict.ContainsKey(stringEntry))
+									{
+										stringDict.Remove(stringEntry);
+									}
+									else
+									{
+										Console.WriteLine("THAT DOESN'T EXIST! D: You need to try something that is actually in your dictionary.\n");
+									}
                                     break;
                                 case 5:
-                                    Console.WriteLine("clear dictionary");
+                                    Console.WriteLine("clearing Dictionary");
+									stringDict.Clear();
                                     break;
                                 case 6:
-                                    Console.WriteLine("search dictionary");
+									Console.WriteLine("What do you want to search for?");
+									stringEntry = Console.ReadLine();
+                                    Console.WriteLine("searching dictionary");
+									sw.Start();
+									
+									if (stringDict.ContainsKey(stringEntry))
+									{
+										sw.Stop();
+										Console.WriteLine(stringEntry + " was found! :D :D");
+										Console.WriteLine("Total time was: " + sw.Elapsed);
+									}
+									else
+									{
+										sw.Stop();
+										Console.WriteLine(stringEntry + " was not found");
+										Console.WriteLine("Total time was: "  + sw.Elapsed);
+
+									}
+									sw.Reset();
                                     break;
                                 case 7:
-                                    Console.WriteLine("return to main menu");
+                                    Console.WriteLine("Returning to main menu\n");
                                     returnToStructMenu = false;
                                     break;
                             }
