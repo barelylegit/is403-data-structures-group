@@ -85,10 +85,12 @@ namespace is403_data_structures_group
                 switch (input)
                 {
                     case STACK:
+                        
                         returnToStructMenu = true; // reset returnToStructMenu
                         // output structMenu with Stack
                         while (returnToStructMenu)
                         {
+                            input = -1; // reset input to throwaway
                             structMenu("Stack");
                             try
                             {
@@ -238,6 +240,7 @@ namespace is403_data_structures_group
                         returnToStructMenu = true; // reset returnToStructMenu
                         while (returnToStructMenu)
                         {
+                            input = -1; // reset input to throwaway
                             structMenu("Queue");
                             try
                             {
@@ -283,6 +286,7 @@ namespace is403_data_structures_group
                         returnToStructMenu = true; // reset returnToStructMenu
                         while (returnToStructMenu)
                         {
+                            input = -1; // reset input to throwaway
                             structMenu("Dictionary");
                             try
                             {
