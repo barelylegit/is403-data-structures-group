@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+ * IS 403 Data Structures Group Project
+ * Repository: https://github.com/budandan/is403-data-structures-group
+ * Alex Christensen
+ * Daniel Ferolino
+ * Connor Garriss
+ * Jackson Jex
+ * 
+ * Description: This is the group project for to demonstrate data structures proficiency. This program allows
+ *              the user to input values into a Stack, Queue and Dictionary while providing display, delete and 
+ *              search functionality. It also demonstrates that Dictionaries are faster for searching. 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
