@@ -41,6 +41,12 @@ namespace is403_data_structures_group
         }
         static void Main(string[] args)
         {
+			Dictionary<string, int> stringDict = new Dictionary<string, int>();
+			System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+			TimeSpan ts;
+
+			string stringEntry;
+            int dictCount = 1;
             // create errorflag
             bool isValidInput = true;
             // create returnToMainMenu flag
@@ -172,9 +178,11 @@ namespace is403_data_structures_group
                             }
                         }
                         break;
+
+
                     case DICTIONARY:
                         returnToStructMenu = true; // reset returnToStructMenu
-                        while (returnToStructMenu)
+                        while (returnToStructMenu == true)
                         {
                             structMenu("Dictionary");
                             try
@@ -192,26 +200,79 @@ namespace is403_data_structures_group
                             }
                             switch (input)
                             {
+								//lets user enter in data to dictionary
                                 case 1:
-                                    Console.WriteLine("Add one time to dictionary");
+                                    Console.WriteLine("Please enter information to add to the Dictionary:");
+									Console.Write("> ");
+									stringEntry = Console.ReadLine();
+									stringDict.Add(stringEntry, dictCount);
+                                    Console.WriteLine("The key \"" + stringEntry + "\" has been successfully added to the Dictionary with the value: " + dictCount);
+                                    dictCount++;
                                     break;
+								//adds 2000 entries
                                 case 2:
-                                    Console.WriteLine("Add list dictionary");
+                                    Console.WriteLine("Added 2000 \"New Entries\" to the Dictionary\n");
+									for (int i = 1; i <= 2000; i++)
+									{
+										stringDict.Add("New Entry " + i, i);
+									}
                                     break;
+								//displays all the data in dictionary
                                 case 3:
-                                    Console.WriteLine("display dictionary");
+                                    Console.WriteLine("Displaying dictionary...\n");
+									foreach (KeyValuePair<string, int> Dictionary in stringDict)
+									{
+										Console.WriteLine(Dictionary.Key + ": " + Dictionary.Value);
+									}
                                     break;
+
+								//Deletes an item that the user wants to delete
                                 case 4:
-                                    Console.WriteLine("delete from dictionary");
+                                    Console.WriteLine("What do you want to delete from the Dictionary?");
+									stringEntry = Console.ReadLine();
+									if (stringDict.ContainsKey(stringEntry))
+									{
+										stringDict.Remove(stringEntry);
+                                        Console.WriteLine("Success!\n");
+									}
+									else
+									{
+										Console.WriteLine("THAT DOESN'T EXIST! D: You need to try something that is actually in your dictionary.\n");
+									}
                                     break;
+								
+								//clears all the data in the dictionary
                                 case 5:
-                                    Console.WriteLine("clear dictionary");
+                                    Console.WriteLine("Dictionary Cleared.");
+									stringDict.Clear();
                                     break;
+								
+								//Searches for specified item in dictionary
                                 case 6:
-                                    Console.WriteLine("search dictionary");
+									Console.WriteLine("What do you want to search for?");
+									stringEntry = Console.ReadLine();
+                                    Console.WriteLine("Searching dictionary...");
+									sw.Start();
+									
+									if (stringDict.ContainsKey(stringEntry))
+									{
+										sw.Stop();
+										Console.WriteLine(stringEntry + " was found! :D :D");
+										Console.WriteLine("Total time was: " + sw.Elapsed);
+									}
+									else
+									{
+										sw.Stop();
+										Console.WriteLine(stringEntry + " was not found");
+										Console.WriteLine("Total time was: "  + sw.Elapsed);
+
+									}
+									sw.Reset();
                                     break;
+								
+								//Returns to the main menu
                                 case 7:
-                                    Console.WriteLine("return to main menu");
+                                    Console.WriteLine("Returning to main menu...\n");
                                     returnToStructMenu = false;
                                     break;
                             }
