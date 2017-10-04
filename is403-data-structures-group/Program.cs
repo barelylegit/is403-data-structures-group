@@ -483,7 +483,7 @@ namespace is403_data_structures_group
                 }
             }
             // wait for any key to terminate
-            Console.WriteLine("\nPress any key to continue...");
+            Console.WriteLine("\nGood Bye. \nPress any key to continue...");
             Console.ReadKey();
         }
     }
