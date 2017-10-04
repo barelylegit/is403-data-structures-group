@@ -243,8 +243,9 @@ namespace is403_data_structures_group
                                         {
                                             stringStack.Push(tempStringStack.Pop()); //replaces all of the stack's original values
                                         }
-                                        sw.Stop();//stop stopwatch
+                                        sw.Stop(); //stop stopwatch                                        
                                         Console.WriteLine("Search took: " + sw.Elapsed); //display the elapsed time
+                                        sw.Reset(); // reset stopwatch
                                     }
                                     
                                     break;
