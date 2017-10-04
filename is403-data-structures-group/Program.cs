@@ -6,7 +6,7 @@
  * Connor Garriss
  * Jackson Jex
  * 
- * Description: This is the group project for to demonstrate data structures proficiency. This program allows
+ * Description: This is the group project to demonstrate data structures proficiency. This program allows
  *              the user to input values into a Stack, Queue and Dictionary while providing display, delete and 
  *              search functionality. It also demonstrates that Dictionaries are faster for searching. 
  */
