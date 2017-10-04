@@ -60,10 +60,6 @@ namespace is403_data_structures_group
             // queue of strings
             Queue<string> stringQueue = new Queue<string>();
 
-            // creates the stopwatch object for elapsed times
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-
-
             // create user input placeholder
             int input = -1;
 
@@ -415,6 +411,7 @@ namespace is403_data_structures_group
                                     break;
 								//adds 2000 entries
                                 case 2:
+                                    stringDict.Clear();
                                     Console.WriteLine("Added 2000 \"New Entries\" to the Dictionary\n");
 									for (int i = 1; i <= 2000; i++)
 									{
