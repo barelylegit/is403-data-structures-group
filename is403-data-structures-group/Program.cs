@@ -247,7 +247,7 @@ namespace is403_data_structures_group
                         returnToStructMenu = true; // reset returnToStructMenu
                         while (returnToStructMenu)
                         {
-
+                            input = -1; // reset input to throwaway value
                             string userInput;
 
                             structMenu("Queue");
