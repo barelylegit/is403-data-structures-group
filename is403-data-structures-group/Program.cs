@@ -45,12 +45,10 @@ namespace is403_data_structures_group
 
 			Dictionary<string, int> stringDict = new Dictionary<string, int>();
 			System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-			TimeSpan ts;
 
 			string stringEntry;
             int dictCount = 1;
-            // create errorflag
-            bool isValidInput = true;
+
             // create returnToMainMenu flag
             bool returnToMenu = true;
             // create returnToStructMenu flag
@@ -117,7 +115,7 @@ namespace is403_data_structures_group
                             switch (input)
                             {
                                 case 1: //enter string
-                                    Console.WriteLine("Enter a string:"); //prompts user to enter a string
+                                    Console.WriteLine("Enter a string to add to the stack:"); //prompts user to enter a string
                                     stringStack.Push(Console.ReadLine()); //puts the string on the stack
                                     break;
                                 case 2: //add huge list
@@ -130,7 +128,7 @@ namespace is403_data_structures_group
                                 case 3: //display
                                     if (stringStack.Count() == 0) //catches when the user hasn't added any items yet
                                     {
-                                        Console.WriteLine("No items to display, please add items");
+                                        Console.WriteLine("The stack is currently empty. Please add to the stack.\n");
                                     }
                                     else
                                     {
@@ -157,7 +155,7 @@ namespace is403_data_structures_group
                                     bool errorFlag = false;
                                     if (stringStack.Count() == 0)
                                     {
-                                        Console.WriteLine("Your stack is empty, please add to the stack");
+                                        Console.WriteLine("The stack is currently empty. Please add to the stack.\n");
                                     }
                                     else
                                     {
@@ -168,7 +166,7 @@ namespace is403_data_structures_group
                                         {
                                             if (stringStack.Count() == 0) //in thise case, the item did not exist
                                             {
-                                                Console.WriteLine("The item you searched did not exist in the Stack.");
+                                                Console.WriteLine("The item you searched did not exist in the Stack.\n");
                                                 errorFlag = true;
                                             }
                                             else if (stringStack.Peek() == valueToDelete)
@@ -191,19 +189,19 @@ namespace is403_data_structures_group
                                     break;
                                 case 5: //empties the stack
                                     stringStack.Clear();
-                                    Console.WriteLine("Stack has been cleared");
+                                    Console.WriteLine("Stack has been cleared.\n");
                                     break;
                                 case 6: //searches the stack
                                     if (stringStack.Count() == 0)
                                     {
-                                        Console.WriteLine("Your stack is empty, please add to the stack");
+                                        Console.WriteLine("The stack is currently empty. Please add to the stack.\n");
                                     }
                                     else
                                     {
                                         string valueToFind;
                                         bool errorFlag1 = false;
                                         Stack<string> tempStringStack = new Stack<string>();
-                                        Console.WriteLine("Enter the entry to search:");//prompts the user to enter the string they want to search
+                                        Console.WriteLine("Enter the string to search for:");//prompts the user to enter the string they want to search
                                         valueToFind = Console.ReadLine();
 
                                         sw.Start(); //begins stopwatch
@@ -239,7 +237,7 @@ namespace is403_data_structures_group
                                     
                                     break;
                                 case 7:
-                                    Console.WriteLine("return to main menu"); //returns the user to the main menu
+                                    Console.WriteLine("Returning to main menu...\n"); //returns the user to the main menu
                                     returnToStructMenu = false;
                                     break;
                             }
@@ -371,7 +369,7 @@ namespace is403_data_structures_group
                                     break;
                                 case 7:
                                     // Returns to the main menu
-                                    Console.WriteLine("return to main menu");
+                                    Console.WriteLine("Returning to main menu...\n");
                                     returnToStructMenu = false;
                                     break;
                             }
